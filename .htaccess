@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteRule ^go/(.*)$ index.php?rewrite=$1 [L]
+
+RewriteRule ^page/([^/\.]+)/tab/([^/\.]+)/?$ index.php?controller=Tab&action=show&pageid=$1&tabid=$2 [L]
+
+RewriteRule ^page/([^/\.]+)/?$ index.php?controller=Page&action=show&pageid=$1 [L]
+
+RewriteRule ^tab/([^/\.]+)/?$ index.php?controller=Page&action=show&tabid=$1 [L]
