@@ -84,7 +84,7 @@ class AbstractBaseController {
 	}
 	
 	private function isAuthenticated() {
-		return $_COOKIE['user'] == md5('###REMOVED###') ? true : false;
+		// ###REMOVED###
 	}
 	
 }
