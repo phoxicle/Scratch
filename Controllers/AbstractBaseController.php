@@ -2,6 +2,7 @@
 declare(ENCODING = 'utf-8');
 namespace Pheide\Controllers;
  
+require_once('Settings.php');
 require_once('Repositories/PageRepository.php'); 
 require_once('Router.php'); 
 
@@ -60,7 +61,7 @@ class AbstractBaseController {
 	}
 	
 	protected function postProcessContent($content) {
-		//escape HTML appearing inside <pre> tags
+		//escape HTML appearing inside <code> tags
 		$content = preg_replace_callback(
 		  '#\<code\>(.+?)\<\/code\>#s',
 		  create_function(
@@ -84,7 +85,8 @@ class AbstractBaseController {
 	}
 	
 	private function isAuthenticated() {
-		// ###REMOVED###
+		global $SETTINGS;
+		return $_COOKIE['user'] == $SETTINGS['authenticationCookieVal'] ? true : false;
 	}
 	
 }

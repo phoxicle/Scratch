@@ -2,6 +2,8 @@
 declare(ENCODING = 'utf-8');
 namespace Pheide\Repositories;
 
+require_once('Settings.php');
+
 class AbstractBaseRepository {
 	
 	var $table;
@@ -91,8 +93,10 @@ class AbstractBaseRepository {
 	
 	protected function connect(){
 		if (!$this->connection) {
-			$this->connection = mysql_connect('localhost', '###REMOVED###', '###REMOVED###');
-			mysql_select_db('scratch', $this->connection);
+			global $SETTINGS;
+			$this->connection = mysql_connect($SETTINGS['databaseHost'], 
+					$SETTINGS['databaseUser'], $SETTINGS['databasePassword']);
+			mysql_select_db($SETTINGS['databaseName'], $this->connection);
 		}	
 	}
 	

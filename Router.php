@@ -2,12 +2,18 @@
 declare(ENCODING = 'utf-8');
 namespace Pheide;
 
+require_once('Settings.php');
 require_once('Repositories/PageRepository.php');
 require_once('Repositories/TabRepository.php');
 
 class Router {
 	
-	var $baseUrl = 'http://localhost/scratch';
+	var $baseUrl;
+	
+	public function __construct() {
+		global $SETTINGS;
+		$this->baseUrl = $SETTINGS['baseUrl'];
+	}
 	
 	public function route(){
 		//handle mod_rewrite params
