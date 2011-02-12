@@ -3,6 +3,7 @@ declare(ENCODING = 'utf-8');
 namespace Pheide\Controllers;
 
 //TODO include abstractbase by default
+require_once('Settings.php');
 require_once('AbstractBaseController.php');
 
 class AuthenticationController extends AbstractBaseController {
@@ -14,9 +15,10 @@ class AuthenticationController extends AbstractBaseController {
 	public function authenticateAction(){
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		
-		if ($username == 'meow' && $password == 'aoeuaoeu1') {
-			setcookie('user',md5(':)'),0,'/');
+
+		global $SETTINGS;		
+		if ($username == $SETTINGS['adminUser'] && $password == $SETTINGS['adminPassword']) {
+			setcookie('user',$SETTINGS['authenticationCookieVal'],0,'/');
 			
 			$this->redirect('show','Page');	
 		} else {

@@ -11,6 +11,8 @@ $SETTINGS = array(
 	'databaseUser' => '###REMOVED###',
 	'databasePassword' => '###REMOVED###',
 	
+	'adminUser' => '###REMOVED###',
+	'adminPassword' => '###REMOVED###',
 	'authenticationCookieVal' => '###REMOVED###',
 );
 
